@@ -35,12 +35,13 @@ function hesapla(donem, komiteSayisi) {
     notlar.push(val);
   }
 
-  const hamOrtalama = notlar.reduce((a, b) => a + b, 0) / komiteSayisi;
-  const ortalamaYuvarlanmis = Math.round(hamOrtalama);
+  let hamOrtalama = notlar.reduce((a, b) => a + b, 0) / komiteSayisi;
+  let yuvarlanmisOrtalama = Math.round(hamOrtalama);
+
   const sonucDiv = document.getElementById(`sonuc${donem}`);
   sonucDiv.innerHTML = '';
 
-  if (hamOrtalama >= 75) {
+  if (yuvarlanmisOrtalama >= 75 && hamOrtalama >= 75) {
     sonucDiv.innerHTML = `
       <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
       🎉 Finalsiz geçtiniz!<br>
@@ -49,27 +50,27 @@ function hesapla(donem, komiteSayisi) {
     `;
     konfetiYagdir(`confetti${donem}`);
   } else {
-    const yuzde60 = ortalamaYuvarlanmis * 0.6;
-    const gerekliFinal = ((59.5 - yuzde60) / 0.4);
-    const gerekliFinalYuvarlanmis = gerekliFinal.toFixed(2);
+    const yuzde60 = yuvarlanmisOrtalama * 0.6;
+    let gerekliFinal = (59.5 - yuzde60) / 0.4;
+    let gerekliFinalYuvarlanmis = Math.ceil(gerekliFinal * 2) / 2;
 
-   if (gerekliFinal > 100) {
+    if (gerekliFinal > 100) {
       sonucDiv.innerHTML = `
         <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
         <div style="font-size: 22px; color: #d9534f; margin-top: 10px;">
-      😢 Ne yazık ki finalden <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor.<br>
-      Bu mümkün değil, <b>sınıfta kaldınız.</b>
+          😢 Ne yazık ki finalden <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor.<br>
+          Bu mümkün değil, <b>sınıfta kaldınız.</b>
         </div>
         <div style="font-size: 18px; margin-top: 15px; color: #a94442;">
-      📚 Yeni bir yıl, yeni bir başlangıç seni bekliyor...<br>
-      <i>Kendini toparla, seneye çok daha iyi olacak!</i>
+          📚 Yeni bir yıl, yeni bir başlangıç seni bekliyor...<br>
+          <i>Kendini toparla, seneye çok daha iyi olacak!</i>
         </div>
-    <img src="uzgun-kedi.jpg" alt="uzgunkedi" style="margin-top: 15px; width: 200px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <img src="uzgunden-kedi.jpg" alt="Üzgün kedi" style="margin-top: 15px; width: 200px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
       `;
-    } else if (gerekliFinal <= 50) {
+    } else if (gerekliFinalYuvarlanmis <= 50) {
       sonucDiv.innerHTML = `
         <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
-        Tebrikler! Finaliniz sadece <b>50</b>’ye kaldı. Başarılar! 🎉
+        🎉 Tebrikler! Final notunuz <b>${gerekliFinalYuvarlanmis}</b>. Final barajı olan 50'yi geçerek dönemi geçebilirsiniz!
       `;
     } else {
       sonucDiv.innerHTML = `
@@ -79,7 +80,6 @@ function hesapla(donem, komiteSayisi) {
     }
   }
 }
-
 
 function konfetiYagdir(canvasId) {
   const canvas = document.getElementById(canvasId);
@@ -124,4 +124,10 @@ function kopyala(id) {
   navigator.clipboard.writeText(yazi)
     .then(() => alert("Kopyalandı: " + yazi))
     .catch(err => alert("Kopyalama başarısız: " + err));
+}
+
+function temizle(donem) {
+  const inputs = document.querySelectorAll(`#inputs${donem} input`);
+  inputs.forEach(input => input.value = '');
+  document.getElementById(`sonuc${donem}`).innerHTML = '';
 }
