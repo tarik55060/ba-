@@ -103,4 +103,10 @@ function toggleDestek() {
   kutu.style.display = (kutu.style.display === "none") ? "block" : "none";
 }
 
+function kopyala(id) {
+  const metin = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(metin)
+    .then(() => alert("Kopyalandı: " + metin))
+    .catch(() => alert("Kopyalama başarısız"));
+}
 
