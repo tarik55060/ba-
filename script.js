@@ -47,31 +47,36 @@ function hesapla(donem, komiteSayisi) {
       <img src="finalsiz-gectiniz.jpg" alt="Finalsiz geçtiniz" style="width:200px;">
       <canvas id="confetti${donem}"></canvas>
     `;
-    konfetiYagdir(`confetti${donem}`);
+   konfetiYagdir(`confetti${donem}`);
   } else {
-    const yuvarlanmisOrtalama = Math.round(gercekOrtalama);
-    const yuzde60 = yuvarlanmisOrtalama * 0.6;
+    const yuzde60 = ortalama * 0.6;
     const gerekliFinal = ((59.5 - yuzde60) / 0.4).toFixed(2);
-
     if (gerekliFinal > 100) {
       sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
-        Finalden <b>${gerekliFinal}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
+        <b>OrtalamanÄ±z: ${ortalama}</b><br>
+        Finalden <b>${gerekliFinal}</b> almanÄ±z gerekiyor. Bu mÃ¼mkÃ¼n deÄŸil, sÄ±nÄ±fta kaldÄ±nÄ±z.
       `;
     } else {
       sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
-        Final sınavından geçmek için minimum <b>${gerekliFinal}</b> almanız gerekiyor.
+        <b>OrtalamanÄ±z: ${ortalama}</b><br>
+        Final sÄ±navÄ±ndan geÃ§mek iÃ§in minimum <b>${gerekliFinal}</b> almanÄ±z gerekiyor.
       `;
-
-      if (parseFloat(gerekliFinal) <= 50) {
-        sonucDiv.innerHTML += `<br><span style="color:red;"><b>⚠ Finaliniz 50'ye kaldı.</b></span>`;
-      }
     }
   }
 }
 
+function konfetiYagdir(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  canvas.width = 300;
+  canvas.height = 200;
+  const ctx = canvas.getContext('2d');
 
+  let confetti = Array.from({length: 100}, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+    size: Math.random() * 5 + 2
+  }));
 
   let gravity = 1;
   let angle = 0;
