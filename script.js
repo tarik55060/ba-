@@ -11,15 +11,15 @@ function showTab(tabId) {
 }
 
 function createInputs(donem, count) {
-  const container = document.getElementById(`inputs${donem}`);
+  const container = document.getElementById(inputs${donem});
   container.innerHTML = '';
   for (let i = 1; i <= count; i++) {
     const input = document.createElement('input');
     input.type = 'number';
     input.min = 0;
     input.max = 100;
-    input.placeholder = `Komite ${i}`;
-    input.id = `d${donem}_k${i}`;
+    input.placeholder = Komite ${i};
+    input.id = d${donem}_k${i};
     container.appendChild(input);
   }
 }
@@ -47,23 +47,26 @@ function hesapla(donem, komiteSayisi) {
       <img src="finalsiz-gectiniz.jpg" alt="Finalsiz geçtiniz" style="width:200px;">
       <canvas id="confetti${donem}"></canvas>
     `;
-   konfetiYagdir(`confetti${donem}`);
+    konfetiYagdir(`confetti${donem}`);
   } else {
-    const yuzde60 = ortalama * 0.6;
+    const yuvarlanmisOrtalama = Math.round(gercekOrtalama);
+    const yuzde60 = yuvarlanmisOrtalama * 0.6;
     const gerekliFinal = ((59.5 - yuzde60) / 0.4).toFixed(2);
+
     if (gerekliFinal > 100) {
       sonucDiv.innerHTML = `
-        <b>OrtalamanÄ±z: ${ortalama}</b><br>
-        Finalden <b>${gerekliFinal}</b> almanÄ±z gerekiyor. Bu mÃ¼mkÃ¼n deÄŸil, sÄ±nÄ±fta kaldÄ±nÄ±z.
+        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
+        Finalden <b>${gerekliFinal}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
       `;
     } else {
       sonucDiv.innerHTML = `
-        <b>OrtalamanÄ±z: ${ortalama}</b><br>
-        Final sÄ±navÄ±ndan geÃ§mek iÃ§in minimum <b>${gerekliFinal}</b> almanÄ±z gerekiyor.
+        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
+        Final sınavından geçmek için minimum <b>${gerekliFinal}</b> almanız gerekiyor.
       `;
     }
   }
 }
+
 
 function konfetiYagdir(canvasId) {
   const canvas = document.getElementById(canvasId);
@@ -74,7 +77,7 @@ function konfetiYagdir(canvasId) {
   let confetti = Array.from({length: 100}, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+    color: hsl(${Math.random() * 360}, 70%, 60%),
     size: Math.random() * 5 + 2
   }));
 
@@ -109,4 +112,3 @@ function kopyala(id) {
     .then(() => alert("Kopyalandı: " + metin))
     .catch(() => alert("Kopyalama başarısız"));
 }
-
