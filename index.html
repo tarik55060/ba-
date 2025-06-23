@@ -38,12 +38,20 @@
     <div id="sonuc3" class="result"></div>
   </div>
 
-  <div style="margin-top: 40px; padding: 15px; max-width: 500px; margin-left:auto; margin-right:auto; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9; font-family: sans-serif; text-align: center;">
-    <h3 style="margin-top: 0;">🎁 Bu siteyi beğendiyseniz destek olabilirsiniz</h3>
+  <!-- Destek Ol Butonu ve Gizli Kutusu -->
+<div style="margin-top: 40px; text-align: center;">
+  <button onclick="toggleDestek()" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #ffcccb; border: none; border-radius: 6px;">
+    💖 Destek Ol
+  </button>
+
+  <div id="destekKutusu" style="display: none; margin-top: 20px; padding: 15px; max-width: 500px; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9; font-family: sans-serif;">
+    <h3 style="margin-top: 0;">Bu siteyi beğendiyseniz destek olabilirsiniz</h3>
     <p style="margin: 5px 0;"><strong>Ad Soyad:</strong> Ahmet Yılmaz</p>
     <p style="margin: 5px 0;"><strong>IBAN:</strong> TR00 0000 0000 0000 0000 0000 00</p>
     <p style="font-size: 0.9em; color: #666;">Açıklama kısmına <em>“Destek”</em> yazabilirsiniz.</p>
   </div>
+</div>
+
 
 
 <script src="script.js"></script>
