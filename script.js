@@ -29,7 +29,6 @@ function hesapla(donem, komiteSayisi) {
   for (let i = 1; i <= komiteSayisi; i++) {
     let val = parseFloat(document.getElementById(`d${donem}_k${i}`).value);
     if (isNaN(val) || val < 0 || val > 100) {
-      // Tüm inputlar dolmadan hesaplama yapılmasın
       document.getElementById(`sonuc${donem}`).innerHTML = "";
       return;
     }
@@ -54,23 +53,25 @@ function hesapla(donem, komiteSayisi) {
     const gerekliFinal = ((59.5 - yuzde60) / 0.4).toFixed(2);
 
     if (gerekliFinal > 100) {
-      sonucDiv.innerHTML =
+      sonucDiv.innerHTML = `
+        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (Yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
+        Finalden <b>${gerekliFinal}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
+      `;
+    } else {
+      sonucDiv.innerHTML = `
+        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (Yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
+        Final sınavından geçmek için minimum <b>${gerekliFinal}</b> almanız gerekiyor.
+      `;
 
+      if (parseFloat(gerekliFinal) <= 50) {
+        sonucDiv.innerHTML += `
+          <br><span style="color:red; font-weight:bold;">⚠ Finaliniz 50'ye kaldı.</span>
+        `;
+      }
+    }
+  }
+}
 
-
-
-function konfetiYagdir(canvasId) {
-  const canvas = document.getElementById(canvasId);
-  canvas.width = 300;
-  canvas.height = 200;
-  const ctx = canvas.getContext('2d');
-
-  let confetti = Array.from({length: 100}, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    color: `hsl(${Math.random() * 360}, 70%, 60%)`,
-    size: Math.random() * 5 + 2
-  }));
 
   let gravity = 1;
   let angle = 0;
