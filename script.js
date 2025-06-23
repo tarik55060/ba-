@@ -97,3 +97,10 @@ function konfetiYagdir(canvasId) {
   }
   draw();
 }
+
+function toggleDestek() {
+  const kutu = document.getElementById("destekKutusu");
+  kutu.style.display = (kutu.style.display === "none") ? "block" : "none";
+}
+
+
