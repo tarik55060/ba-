@@ -53,10 +53,18 @@ function hesapla(donem, komiteSayisi) {
     const gerekliFinal = ((59.5 - yuzde60) / 0.4);
     const gerekliFinalYuvarlanmis = gerekliFinal.toFixed(2);
 
-    if (gerekliFinal > 100) {
+   if (gerekliFinal > 100) {
       sonucDiv.innerHTML = `
         <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
-        Finalden <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
+        <div style="font-size: 22px; color: #d9534f; margin-top: 10px;">
+      😢 Ne yazık ki finalden <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor.<br>
+      Bu mümkün değil, <b>sınıfta kaldınız.</b>
+        </div>
+        <div style="font-size: 18px; margin-top: 15px; color: #a94442;">
+      📚 Yeni bir yıl, yeni bir başlangıç seni bekliyor...<br>
+      <i>Kendini toparla, seneye çok daha iyi olacak!</i>
+        </div>
+    <img src="uzgunden-kedi.jpg" alt="Üzgün kedi" style="margin-top: 15px; width: 200px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
       `;
     } else if (gerekliFinal <= 50) {
       sonucDiv.innerHTML = `
