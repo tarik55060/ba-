@@ -35,31 +35,30 @@ function hesapla(donem, komiteSayisi) {
     notlar.push(val);
   }
 
-  let hamOrtalama = notlar.reduce((a, b) => a + b, 0) / komiteSayisi;
-  let ortalamaYuvarlanmis = Math.round(hamOrtalama);
+  const hamOrtalama = notlar.reduce((a, b) => a + b, 0) / komiteSayisi;
+  const ortalamaYuvarlanmis = Math.round(hamOrtalama);
   const sonucDiv = document.getElementById(`sonuc${donem}`);
   sonucDiv.innerHTML = '';
 
   if (hamOrtalama >= 75) {
     sonucDiv.innerHTML = `
-    <b>Ortalamanız: ${ortalamaYuvarlanmis}</b><br>
-    🎉 Finalsiz geçtiniz!<br>
-    <img src="finalsiz-gectiniz.jpg" alt="Finalsiz geçtiniz" style="width:200px;">
-    <canvas id="confetti${donem}"></canvas>
-  `;
-  konfetiYagdir(`confetti${donem}`);
+      <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
+      🎉 Finalsiz geçtiniz!<br>
+      <img src="finalsiz-gectiniz.jpg" alt="Finalsiz geçtiniz" style="width:200px;">
+      <canvas id="confetti${donem}"></canvas>
+    `;
+    konfetiYagdir(`confetti${donem}`);
   } else {
     const yuzde60 = ortalamaYuvarlanmis * 0.6;
-
     const gerekliFinal = ((59.5 - yuzde60) / 0.4).toFixed(2);
     if (gerekliFinal > 100) {
       sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${ortalama}</b><br>
+        <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
         Finalden <b>${gerekliFinal}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
       `;
     } else {
       sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${ortalama}</b><br>
+        <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
         Final sınavından geçmek için minimum <b>${gerekliFinal}</b> almanız gerekiyor.
       `;
     }
