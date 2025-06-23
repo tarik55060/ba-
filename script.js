@@ -3,7 +3,28 @@ window.onload = () => {
   createInputs(2, 6);
   createInputs(3, 6);
   showTab('donem1');
+  
+  const darkModeToggle = document.getElementById('darkModeToggle');
+
+  darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    if(document.body.classList.contains('dark-mode')) {
+      darkModeToggle.textContent = '☀️ Gece Modu Kapat';
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      darkModeToggle.textContent = '🌙 Gece Modu Aç';
+      localStorage.setItem('darkMode', 'disabled');
+    }
+  });
+
+// Sayfa açılırken tercihi uygula
+  if(localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+    darkModeToggle.textContent = '☀️ Gece Modu Kapat';
+  }
 };
+
 
 function showTab(tabId) {
   document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
