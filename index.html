@@ -45,11 +45,23 @@
   </button>
 
   <div id="destekKutusu" style="display: none; margin-top: 20px; padding: 15px; max-width: 500px; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9; font-family: sans-serif;">
-    <h3 style="margin-top: 0;">Bu siteyi beğendiyseniz sunucu giderleri için destek olabilirsiniz</h3>
-    <p style="margin: 5px 0;"><strong>Ad Soyad:</strong> Tarık Baran Albayrak </p>
-    <p style="margin: 5px 0;"><strong>IBAN:</strong> TR920011100000000120914687 </p>
-    <p style="font-size: 0.9em; color: #666;">Açıklama kısmına <em>“Odunot Destek”</em> yazabilirsiniz.</p>
+    <h3 style="margin-top: 0;">Bu siteyi beğendiyseniz destek olabilirsiniz</h3>
+  
+    <p style="margin: 5px 0;">
+    <strong>Ad Soyad:</strong> 
+    <span id="adSoyad">Ahmet Yılmaz</span>
+    <button onclick="kopyala('adSoyad')" style="margin-left: 10px; padding: 2px 6px;">📋</button>
+    </p>
+  
+    <p style="margin: 5px 0;">
+    <strong>IBAN:</strong> 
+    <span id="iban">TR00 0000 0000 0000 0000 0000 00</span>
+    <button onclick="kopyala('iban')" style="margin-left: 10px; padding: 2px 6px;">📋</button>
+     </p>
+  
+    <p style="font-size: 0.9em; color: #666;">Açıklama kısmına <em>“Destek”</em> yazabilirsiniz.</p>
   </div>
+
 </div>
 
 
