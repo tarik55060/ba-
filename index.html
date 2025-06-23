@@ -6,12 +6,11 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .result img { margin-top: 10px; }
-    canvas { display: block; margin: 10px auto; }
+    canvas { display:block; margin:10px auto; }
   </style>
 </head>
 <body>
   <h1>ODÜ Tıp Dönem Sınav Hesaplayıcı</h1>
-
   <div class="tabs">
     <button onclick="showTab('donem1')">Dönem I</button>
     <button onclick="showTab('donem2')">Dönem II</button>
@@ -22,6 +21,7 @@
     <h2>Dönem I</h2>
     <div class="inputs" id="inputs1"></div>
     <button onclick="hesapla(1, 5)">Hesapla</button>
+    <button onclick="temizle(1)">Tümünü Temizle</button>
     <div id="sonuc1" class="result"></div>
   </div>
 
@@ -29,6 +29,7 @@
     <h2>Dönem II</h2>
     <div class="inputs" id="inputs2"></div>
     <button onclick="hesapla(2, 6)">Hesapla</button>
+    <button onclick="temizle(2)">Tümünü Temizle</button>
     <div id="sonuc2" class="result"></div>
   </div>
 
@@ -36,6 +37,7 @@
     <h2>Dönem III</h2>
     <div class="inputs" id="inputs3"></div>
     <button onclick="hesapla(3, 6)">Hesapla</button>
+    <button onclick="temizle(3)">Tümünü Temizle</button>
     <div id="sonuc3" class="result"></div>
   </div>
 
@@ -46,10 +48,10 @@
     </button>
 
     <div id="destekKutusu" style="display: none; margin-top: 20px; padding: 15px; max-width: 500px; margin-left: auto; margin-right: auto; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9; font-family: sans-serif;">
-      <h3 style="margin-top: 0;">Bu siteyi beğendiyseniz link hakkı giderleri için destek olabilirsiniz</h3>
+      <h3 style="margin-top: 0;">Bu siteyi beğendiyseniz destek olabilirsiniz</h3>
 
       <p style="margin: 5px 0;">
-        <strong>Ad Soyad:</strong> <span id="adSoyad">Tarık Baran Albayrak</span>
+        <strong>Ad Soyad:</strong> <span id="adSoyad">Ahmet Yılmaz</span>
         <button onclick="kopyala('adSoyad')" style="margin-left: 10px;">Kopyala</button>
       </p>
 
@@ -58,7 +60,7 @@
         <button onclick="kopyala('iban')" style="margin-left: 10px;">Kopyala</button>
       </p>
 
-      <p style="font-size: 0.9em; color: #666;">Açıklama kısmına <em>“Odunot Destek”</em> yazabilirsiniz.</p>
+      <p style="font-size: 0.9em; color: #666;">Açıklama kısmına <em>“Destek”</em> yazabilirsiniz.</p>
     </div>
   </div>
 
