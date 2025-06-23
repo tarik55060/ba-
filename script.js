@@ -29,6 +29,7 @@ function hesapla(donem, komiteSayisi) {
   for (let i = 1; i <= komiteSayisi; i++) {
     let val = parseFloat(document.getElementById(`d${donem}_k${i}`).value);
     if (isNaN(val) || val < 0 || val > 100) {
+      // Tüm inputlar dolmadan hesaplama yapılmasın
       document.getElementById(`sonuc${donem}`).innerHTML = "";
       return;
     }
@@ -54,23 +55,22 @@ function hesapla(donem, komiteSayisi) {
 
     if (gerekliFinal > 100) {
       sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (Yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
+        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
         Finalden <b>${gerekliFinal}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
       `;
     } else {
       sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (Yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
+        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
         Final sınavından geçmek için minimum <b>${gerekliFinal}</b> almanız gerekiyor.
       `;
 
       if (parseFloat(gerekliFinal) <= 50) {
-        sonucDiv.innerHTML += `
-          <br><span style="color:red; font-weight:bold;">⚠ Finaliniz 50'ye kaldı.</span>
-        `;
+        sonucDiv.innerHTML += `<br><span style="color:red;"><b>⚠ Finaliniz 50'ye kaldı.</b></span>`;
       }
     }
   }
 }
+
 
 
   let gravity = 1;
