@@ -126,8 +126,3 @@ function kopyala(id) {
     .catch(err => alert("Kopyalama başarısız: " + err));
 }
 
-function temizle(donem) {
-  const inputs = document.querySelectorAll(`#inputs${donem} input`);
-  inputs.forEach(input => input.value = '');
-  document.getElementById(`sonuc${donem}`).innerHTML = '';
-}
