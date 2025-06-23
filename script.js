@@ -29,7 +29,8 @@ function hesapla(donem, komiteSayisi) {
   for (let i = 1; i <= komiteSayisi; i++) {
     let val = parseFloat(document.getElementById(`d${donem}_k${i}`).value);
     if (isNaN(val) || val < 0 || val > 100) {
-      alert(`Komite ${i} için geçerli bir not girin (0-100 arası)`);
+      // Tüm inputlar dolmadan hesaplama yapılmasın
+      document.getElementById(`sonuc${donem}`).innerHTML = "";
       return;
     }
     notlar.push(val);
@@ -40,9 +41,8 @@ function hesapla(donem, komiteSayisi) {
   sonucDiv.innerHTML = '';
 
   if (gercekOrtalama >= 75) {
-    const yuvarlanmisOrtalama = Math.round(gercekOrtalama);
     sonucDiv.innerHTML = `
-      <b>Ortalamanız: ${yuvarlanmisOrtalama}</b><br>
+      <b>Ortalamanız: ${gercekOrtalama.toFixed(2)}</b><br>
       🎉 Finalsiz geçtiniz!<br>
       <img src="finalsiz-gectiniz.jpg" alt="Finalsiz geçtiniz" style="width:200px;">
       <canvas id="confetti${donem}"></canvas>
@@ -52,19 +52,21 @@ function hesapla(donem, komiteSayisi) {
     const yuvarlanmisOrtalama = Math.round(gercekOrtalama);
     const yuzde60 = yuvarlanmisOrtalama * 0.6;
     const gerekliFinal = ((59.5 - yuzde60) / 0.4).toFixed(2);
+
     if (gerekliFinal > 100) {
       sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${yuvarlanmisOrtalama}</b><br>
+        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
         Finalden <b>${gerekliFinal}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
       `;
     } else {
       sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${yuvarlanmisOrtalama}</b><br>
+        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
         Final sınavından geçmek için minimum <b>${gerekliFinal}</b> almanız gerekiyor.
       `;
     }
   }
 }
+
 
 
 function konfetiYagdir(canvasId) {
