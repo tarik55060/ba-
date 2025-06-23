@@ -50,20 +50,28 @@ function hesapla(donem, komiteSayisi) {
     konfetiYagdir(`confetti${donem}`);
   } else {
     const yuzde60 = ortalamaYuvarlanmis * 0.6;
-    const gerekliFinal = ((59.5 - yuzde60) / 0.4).toFixed(2);
+    const gerekliFinal = ((59.5 - yuzde60) / 0.4);
+    const gerekliFinalYuvarlanmis = gerekliFinal.toFixed(2);
+
     if (gerekliFinal > 100) {
       sonucDiv.innerHTML = `
         <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
-        Finalden <b>${gerekliFinal}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
+        Finalden <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
+      `;
+    } else if (gerekliFinal <= 50) {
+      sonucDiv.innerHTML = `
+        <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
+        Tebrikler! Finaliniz sadece <b>50</b>’ye kaldı. Başarılar! 🎉
       `;
     } else {
       sonucDiv.innerHTML = `
         <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
-        Final sınavından geçmek için minimum <b>${gerekliFinal}</b> almanız gerekiyor.
+        Final sınavından geçmek için minimum <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor.
       `;
     }
   }
 }
+
 
 function konfetiYagdir(canvasId) {
   const canvas = document.getElementById(canvasId);
