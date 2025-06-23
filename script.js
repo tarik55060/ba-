@@ -11,18 +11,19 @@ function showTab(tabId) {
 }
 
 function createInputs(donem, count) {
-  const container = document.getElementById(inputs${donem});
+  const container = document.getElementById(`inputs${donem}`);
   container.innerHTML = '';
   for (let i = 1; i <= count; i++) {
     const input = document.createElement('input');
     input.type = 'number';
     input.min = 0;
     input.max = 100;
-    input.placeholder = Komite ${i};
-    input.id = d${donem}_k${i};
+    input.placeholder = `Komite ${i}`;
+    input.id = `d${donem}_k${i}`;
     container.appendChild(input);
   }
 }
+
 
 function hesapla(donem, komiteSayisi) {
   let notlar = [];
