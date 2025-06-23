@@ -64,7 +64,7 @@ function hesapla(donem, komiteSayisi) {
       📚 Yeni bir yıl, yeni bir başlangıç seni bekliyor...<br>
       <i>Kendini toparla, seneye çok daha iyi olacak!</i>
         </div>
-    <img src="uzgunden-kedi.jpg" alt="Üzgün kedi" style="margin-top: 15px; width: 200px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <img src="uzgun-kedi.jpg" alt="Üzgün kedi" style="margin-top: 15px; width: 200px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
       `;
     } else if (gerekliFinal <= 50) {
       sonucDiv.innerHTML = `
