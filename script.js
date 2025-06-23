@@ -54,18 +54,8 @@ function hesapla(donem, komiteSayisi) {
     const gerekliFinal = ((59.5 - yuzde60) / 0.4).toFixed(2);
 
     if (gerekliFinal > 100) {
-      sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
-        Finalden <b>${gerekliFinal}</b> almanız gerekiyor. Bu mümkün değil, sınıfta kaldınız.
-      `;
-    } else {
-      sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${gercekOrtalama.toFixed(2)} (yuvarlanmış: ${yuvarlanmisOrtalama})</b><br>
-        Final sınavından geçmek için minimum <b>${gerekliFinal}</b> almanız gerekiyor.
-      `;
-    }
-  }
-}
+      sonucDiv.innerHTML =
+
 
 
 
