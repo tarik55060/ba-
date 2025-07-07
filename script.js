@@ -124,6 +124,8 @@ function hesapla(donem, komiteSayisi) {
 
   // Paylaş butonu ekle
   eklePaylasButonu(sonucDiv, sonucMetni);
+
+  return;  // 🩹 BURASI!
 }
 
 function konfetiYagdir(canvasId) {
