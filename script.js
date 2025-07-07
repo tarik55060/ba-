@@ -67,7 +67,8 @@ function hesapla(donem, komiteSayisi) {
   // Sonucu metin olarak hazırlayalım
   let sonucMetni = `Dönem ${donem} Not Ortalaması: ${hamOrtalama.toFixed(2)}\n`;
 
-  if (yuvarlanmisOrtalama >= 75 ) {
+  if (yuvarlanmisOrtalama >= 75) {
+    // Finalsiz geçiyor
     sonucDiv.innerHTML = `
       <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
       🎉 Finalsiz geçtiniz!<br>
@@ -76,39 +77,41 @@ function hesapla(donem, komiteSayisi) {
     `;
     konfetiYagdir(`confetti${donem}`);
     sonucMetni += "Finalsiz geçtiniz! 🎉";
-  } else {
-    const yuzde60 = yuvarlanmisOrtalama * 0.6;
+} else {
+    // Final gerekli → hesaplama ham ortalama ile
+    const yuzde60 = hamOrtalama * 0.6;
     let gerekliFinal = (59.5 - yuzde60) / 0.4;
     let gerekliFinalYuvarlanmis = Math.ceil(gerekliFinal * 2) / 2;
 
     if (gerekliFinal > 100) {
-      sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
-        <div style="font-size: 22px; color: #d9534f; margin-top: 10px;">
-          😢 Ne yazık ki finalden <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor.<br>
-          Bu mümkün değil, <b>sınıfta kaldınız.</b>
-        </div>
-        <div style="font-size: 18px; margin-top: 15px; color: #a94442;">
-          📚 Yeni bir yıl, yeni bir başlangıç seni bekliyor...<br>
-          <i>Kendini toparla, seneye çok daha iyi olacak!</i>
-        </div>
-        <img src="uzgun-kedi.jpg" alt="Üzgün kedi" style="margin-top: 15px; width: 200px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-      `;
-      sonucMetni += `Final notu çok yüksek: ${gerekliFinalYuvarlanmis}. Sınıfta kaldınız.`;
+        sonucDiv.innerHTML = `
+          <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
+          <div style="font-size: 22px; color: #d9534f; margin-top: 10px;">
+            😢 Ne yazık ki finalden <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor.<br>
+            Bu mümkün değil, <b>sınıfta kaldınız.</b>
+          </div>
+          <div style="font-size: 18px; margin-top: 15px; color: #a94442;">
+            📚 Yeni bir yıl, yeni bir başlangıç seni bekliyor...<br>
+            <i>Kendini toparla, seneye çok daha iyi olacak!</i>
+          </div>
+          <img src="uzgun-kedi.jpg" alt="Üzgün kedi" style="margin-top: 15px; width: 200px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        `;
+        sonucMetni += `Final notu çok yüksek: ${gerekliFinalYuvarlanmis}. Sınıfta kaldınız.`;
     } else if (gerekliFinalYuvarlanmis <= 50) {
-      sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
-        🎉 Tebrikler! Final notunuz <b>${gerekliFinalYuvarlanmis}</b>. Final barajı olan 50'yi geçerek dönemi geçebilirsiniz!
-      `;
-      sonucMetni += `Finalden almanız gereken not: ${gerekliFinalYuvarlanmis}. Final barajını geçtiniz!`;
+        sonucDiv.innerHTML = `
+          <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
+          🎉 Tebrikler! Final notunuz <b>${gerekliFinalYuvarlanmis}</b>. Final barajı olan 50'yi geçerek dönemi geçebilirsiniz!
+        `;
+        sonucMetni += `Finalden almanız gereken not: ${gerekliFinalYuvarlanmis}. Final barajını geçtiniz!`;
     } else {
-      sonucDiv.innerHTML = `
-        <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
-        Final sınavından geçmek için minimum <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor.
-      `;
-      sonucMetni += `Finalden almanız gereken minimum not: ${gerekliFinalYuvarlanmis}.`;
+        sonucDiv.innerHTML = `
+          <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
+          Final sınavından geçmek için minimum <b>${gerekliFinalYuvarlanmis}</b> almanız gerekiyor.
+        `;
+        sonucMetni += `Finalden almanız gereken minimum not: ${gerekliFinalYuvarlanmis}.`;
     }
-  }
+}
+
 
   // Sonucu geçmişe kaydet
   kaydetGecmis(donem, sonucMetni, notlar);
