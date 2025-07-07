@@ -67,7 +67,7 @@ function hesapla(donem, komiteSayisi) {
   // Sonucu metin olarak hazırlayalım
   let sonucMetni = `Dönem ${donem} Not Ortalaması: ${hamOrtalama.toFixed(2)}\n`;
 
-  if (yuvarlanmisOrtalama >= 75 && hamOrtalama >= 75) {
+  if (yuvarlanmisOrtalama >= 75 ) {
     sonucDiv.innerHTML = `
       <b>Ortalamanız: ${hamOrtalama.toFixed(2)}</b><br>
       🎉 Finalsiz geçtiniz!<br>
